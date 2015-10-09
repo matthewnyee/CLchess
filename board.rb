@@ -6,7 +6,7 @@ class Board
     @grid = Array.new(8) { Array.new(8) {nil} }
     #fill_black_pieces
     #fill_white_pieces
-    @highlight = [5, 0]
+    @highlight = [5, 5]
   end
 
   def move(start_pos, end_pos)
@@ -34,7 +34,6 @@ class Board
     print "   "
     ('A'..'H').each { |letter| print " #{letter} "}
     print "\n"*3
-    highlight_square
   end
 
   def highlight_square(x, y)

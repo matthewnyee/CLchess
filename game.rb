@@ -6,14 +6,29 @@ class Game
   def initialize
     @board = Board.new
     @board.display
+    move_highlight
   end
 
-  def get_player_input
-    STDIN.getch
-    modify(@board.highlight)
+  def move_highlight
+    while true
+      command = STDIN.getch
+      if command == "a"
+        @board.highlight[0] = (@board.highlight[0] - 1)
+      elsif command == "d"
+        @board.highlight[0] = (@board.highlight[0] + 1)
+      elsif command == "w"
+        @board.highlight[1] = (@board.highlight[1] + 1)
+      elsif command =="s"
+        @board.highlight[1] = (@board.highlight[1] - 1)
+      elsif command == "\r"
+        move_piece(@game.highlight)
+      elsif command == "q"
+        exit
+      end
+      @board.display
+    end
   end
-
 
 end
 
-Game.new.play
+Game.new
