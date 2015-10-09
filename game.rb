@@ -20,8 +20,6 @@ class Game
         @board.highlight[1] = (@board.highlight[1] + 1)
       elsif command =="s"
         @board.highlight[1] = (@board.highlight[1] - 1)
-      elsif command == "\r"
-        move_piece(@game.highlight)
       elsif command == "q"
         exit
       end

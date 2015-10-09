@@ -18,12 +18,12 @@ class Board
   end
 
   def display
-    print "\n"*20
+    print "\n" * 50
     (0...8).each do |y_coord|
       print "#{8-y_coord}  "
       (0...8).each do |x_coord|
         if @highlight[0] == x_coord && @highlight[1] == (7 - y_coord)
-          print highlight_square(x_coord, y_coord)
+          print " H "
         else
           print "   "
         end
@@ -33,11 +33,7 @@ class Board
     print "\n"
     print "   "
     ('A'..'H').each { |letter| print " #{letter} "}
-    print "\n"*3
-  end
-
-  def highlight_square(x, y)
-    " H "
+    print "\n" * 3
   end
 
 end
