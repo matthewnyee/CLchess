@@ -1,6 +1,6 @@
 class Board
 
-  attr_accessor :highlight
+  attr_accessor :highlight, :grid
 
   def initialize
     @grid = Array.new(8) { Array.new(8) {nil} }
