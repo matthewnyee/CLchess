@@ -1,16 +1,24 @@
 class Piece
 
-  attr_reader :color
+  attr_reader :position, :color
 
   LINEARS = [[1, 0], [0,  1], [-1, 0], [0,  -1]]
   DIAGONALS = [[1, 1], [1, -1], [-1, 1], [-1, -1]]
+  KNIGHTS   = [
+    [-1,  2],
+    [1,   2],
+    [2,   1],
+    [2,  -1],
+    [1,  -2],
+    [-1, -2],
+    [-2, -1],
+    [-2,  1],
+  ]
 
-  def initialize(color, position, board)
+  def initialize(position, color)
     @position = position
     @color    = color
-    @board    = board
   end
-
 
   def moves
     #return array of moves
@@ -29,7 +37,6 @@ class Piece
     end
   end
 
-  #private?
   def modify_position(pos, mod)
     [pos, mod].transpose.map { |coord| coord.inject(:+) }
   end
