@@ -25,7 +25,7 @@ class Pawn < SteppingPiece
   end
 
   def reverse_direction(pos)
-    [pos[0], -1 * pos[1]]
+    [pos[0], pos[1] * -1]
   end
 
 end
