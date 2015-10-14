@@ -42,4 +42,14 @@ class Piece
     [pos, mod].transpose.map { |coord| coord.inject(:+) }
   end
 
+  def valid_moves
+    self.moves.select do |move|
+      x, y = move[0], move[1]
+      temp_board = @board.dup
+      temp_board.grid[@position[0]][@position[1]] = nil
+      temp_board.grid[x][y] = self.class.new(self.color, move, temp_board)
+      !temp_board.in_check?(@color)
+    end
+  end
+
 end

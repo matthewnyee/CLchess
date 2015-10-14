@@ -6,6 +6,7 @@ class Game
   def initialize
     @board = Board.new
     @board.display
+    @selected = false
     move_highlight
   end
 
@@ -22,8 +23,12 @@ class Game
         @board.highlight[1] = (@board.highlight[1] - 1)
       elsif command == "q"
         exit
+      elsif command == "\r"
+        @selected = !@selected
       end
       @board.display
+      print "Current 'selected' status is: #{@selected}."
+      print "\n"
     end
   end
 
