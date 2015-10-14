@@ -25,7 +25,7 @@ class Board
     add_white_pieces
     add_black_pieces
     @highlight = [5, 5]
-    # @selected = :false
+    @to_move = :white
   end
 
   def add_white_pieces
@@ -47,11 +47,25 @@ class Board
   end
 
   def move(start_pos, end_pos)
-    #select piece at start_pos
-    #make end_pos point to piece we're moving
-    #make start_pos nil
-    #raise exception if no piece at start_pos
-    #raise exception if cannot move to end_pos
+    print 'no piece here' if get_piece_at(start_pos).nil? #raise?
+    piece_to_move = get_piece_at(start_pos)
+    move_array = piece_to_move.valid_moves
+    if move_array.include?(end_pos)
+      set_piece_at(start_pos) { nil }
+      piece_color, piece_class = piece_to_move.color, piece_to_move.class
+      set_piece_at(end_pos) { piece_class.new(piece_color, end_pos, self) }
+      @to_move = other_color(@to_move)
+    else
+      print "can't move there"
+    end
+  end
+
+  def get_piece_at(pos)
+    @grid[pos[0]][pos[1]]
+  end
+
+  def set_piece_at(pos, &prc)
+    @grid[pos[0]][pos[1]] = prc.call
   end
 
   def display
@@ -67,7 +81,6 @@ class Board
     print "   "
     ('A'..'H').each { |letter| print " #{letter} "}
     print "\n" * 3
-    # print "Selecting: #{@selected}"
   end
 
   def render_square(x, y)
@@ -84,14 +97,14 @@ class Board
   end
 
   def in_check?(color)
-    king_piece = all_pieces(color).select { |piece| piece.is_a?(King) }.first
-    all_pieces(other_color(color)).each do |piece|
+    king_piece = get_all_pieces(color).select { |piece| piece.is_a?(King) }.first
+    get_all_pieces(other_color(color)).each do |piece|
       return true if piece.moves.include?(king_piece.position)
     end
     return false
   end
 
-  def all_pieces(color)
+  def get_all_pieces(color)
     pieces = Array.new
     @grid.flatten.compact.each do |piece|
       if piece.color == color
@@ -102,7 +115,7 @@ class Board
   end
 
   def checkmate?(color)
-    all_moves = all_pieces(color).inject([]) do |total_moves, piece|
+    all_moves = get_all_pieces(color).inject([]) do |total_moves, piece|
       total_moves + piece.valid_moves
     end
     all_moves.empty?
@@ -116,5 +129,9 @@ class Board
       end
     end
     dup_board
+  end
+
+  def other_color(color)
+    color == :white ? (return :black) : (return :white)
   end
 end

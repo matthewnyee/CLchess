@@ -12,6 +12,9 @@ class Game
 
   def move_highlight
     while true
+      print "Current 'selected' status is: #{@selected}."
+      print "\n"
+      print "Press 'q' to quit"
       command = STDIN.getch
       if command == "a"
         @board.highlight[0] = (@board.highlight[0] - 1)
@@ -27,8 +30,6 @@ class Game
         @selected = !@selected
       end
       @board.display
-      print "Current 'selected' status is: #{@selected}."
-      print "\n"
     end
   end
 
