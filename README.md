@@ -6,7 +6,7 @@ CLI chess game built using Ruby. Currently a work in progress, with most of game
 
 * Graphical user interface for playing (moving cursor/moving pieces), player inputs recorded on keyboard.
 * Users play against random move generator
-* Code kept DRY by extracting common piece movements into unique classes (sliding pieces/stepping pieces), each piece inheriting from these shared movement classes.
+* Code kept DRY by extracting common piece movements into shared classes (sliding pieces/stepping pieces), each piece inheriting from these movement classes.
 
 ###Instructions
 
