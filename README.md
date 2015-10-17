@@ -1,13 +1,16 @@
-# CLchess
-Command line chess
+#CLchess
 
-Command line interface chess game built using Ruby. 
+CLI chess game built using Ruby. Currently a work in progress, with most of gameplay functional.
 
 #Features
 
-Graphical user interface for playing (moving cursor/moving pieces), player inputs recorded on keyboard. 
-Kept code DRY by extracting common movements (sliding/stepping) into unique classes.
+* Graphical user interface for playing (moving cursor/moving pieces), player inputs recorded on keyboard.
+* Users play against random move generator
+* Code kept DRY by extracting common piece movements into unique classes (sliding pieces/stepping pieces), each piece inheriting from these shared movement classes.
 
-#Gameplay
+#Instructions
 
-Play game by navigating to clchess directory and opening game.rb file in ruby ("ruby game.rb"). Will require installing of colorize gem (https://rubygems.org/gems/colorize/versions/0.7.7).
+* Download this repository
+* Open CLI and navigate to clchess directory
+* Install [colorize gem](https://rubygems.org/gems/colorize/versions/0.7.7) (`gem install colorize`)
+* Play game by opening game.rb file in ruby (`ruby game.rb`)
