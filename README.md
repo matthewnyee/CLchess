@@ -1,4 +1,4 @@
-#CLchess
+#Ruby Chess
 
 CLI chess game built using Ruby. Currently a work in progress, with most of gameplay functional.
 
