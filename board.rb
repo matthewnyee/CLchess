@@ -18,7 +18,7 @@ class Board
     King   => '♚'
   }
 
-  attr_accessor :highlight, :grid#, :selected
+  attr_accessor :highlight, :grid, :to_move
 
   def initialize
     @grid = Array.new(8) { Array.new(8) {nil} }

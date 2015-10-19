@@ -7,7 +7,7 @@ class SlidingPiece < Piece
       new_pos = [@position, mod].transpose.map {|coord| coord.inject(:+)}
         # need to set new_pos, otherwise occupied_by?(@position) will return
         # :friend, because your color == your color ==> :friend
-      move_array << get_entire_direction(new_pos, mod)
+      move_array + get_entire_direction(new_pos, mod)
     end
   end
 

@@ -21,10 +21,6 @@ class Piece
     @board    = board
   end
 
-  def moves
-    #return array of moves
-  end
-
   def in_range?(pos)
     pos.all? { |coord| coord.between?(0, 7) }
   end
@@ -51,5 +47,4 @@ class Piece
       !temp_board.in_check?(@color)
     end
   end
-
 end

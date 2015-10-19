@@ -13,9 +13,9 @@ class Game
     while @playing
       print "It's #{@board.to_move}'s turn to move\n"
       take_turn(@board.to_move)
-      if @board.checkmate?(@board.to_move)
-        @playing = false
-      end
+      # if @board.checkmate?(@board.to_move)
+      #   @playing = false
+      # end
     end
     print "#{@board.to_move} lost the game\n"
   end
@@ -61,6 +61,7 @@ class Game
           @piece_pos = pos
           @getting_piece = false
         else
+          print "That's not your piece!"
         end
       else
         print "You can't pick that!"
@@ -77,7 +78,7 @@ class Game
 
   def move_highlight(mod)
     new_pos = [@board.highlight, mod].transpose.map { |coord| coord.inject(:+) }
-    if new_pos.all? { |coord| coord.between?(0,7) }
+    if new_pos.all? { |coord| coord.between?(0, 7) }
       @board.highlight = new_pos
     end
   end
