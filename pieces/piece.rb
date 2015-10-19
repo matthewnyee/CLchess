@@ -1,6 +1,6 @@
 class Piece
 
-  attr_reader :position, :color
+  attr_reader :position, :color, :board
 
   LINEARS = [[1, 0], [0,  1], [-1, 0], [0,  -1]]
   DIAGONALS = [[1, 1], [1, -1], [-1, 1], [-1, -1]]
@@ -47,7 +47,7 @@ class Piece
       x, y = move[0], move[1]
       temp_board = @board.dup
       temp_board.grid[@position[0]][@position[1]] = nil
-      temp_board.grid[x][y] = self.class.new(self.color, move, temp_board)
+      temp_board.grid[x][y] = self.class.new(move, self.color, temp_board)
       !temp_board.in_check?(@color)
     end
   end

@@ -53,7 +53,7 @@ class Board
     if move_array.include?(end_pos)
       set_piece_at(start_pos) { nil }
       piece_color, piece_class = piece_to_move.color, piece_to_move.class
-      set_piece_at(end_pos) { piece_class.new(piece_color, end_pos, self) }
+      set_piece_at(end_pos) { piece_class.new(end_pos, piece_color, self) }
       @to_move = other_color(@to_move)
     else
       print "can't move there"
