@@ -13,9 +13,9 @@ class Game
     while @playing
       print "It's #{@board.to_move}'s turn to move\n"
       take_turn(@board.to_move)
-      # if @board.checkmate?(@board.to_move)
-      #   @playing = false
-      # end
+      if @board.checkmate?(@board.to_move)
+        @playing = false
+      end
     end
     print "#{@board.to_move} lost the game\n"
   end
