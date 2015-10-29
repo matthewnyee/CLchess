@@ -86,11 +86,13 @@ class Board
   def render_square(x, y)
     piece = @grid[x][7-y]
     if @highlight[0] == x && @highlight[1] == (7 - y) && piece
-      print " #{UNICODE_PIECES[piece.class]} ".colorize(piece.color).colorize(:background => BACKGROUND_COLOR[:highlight])
+      print " #{UNICODE_PIECES[piece.class]} ".colorize(piece.color).colorize(
+        :background => BACKGROUND_COLOR[:highlight])
     elsif @highlight[0] == x && @highlight[1] == (7 - y)
       print "   ".colorize(:background => BACKGROUND_COLOR[:highlight])
     elsif piece
-      print " #{UNICODE_PIECES[piece.class]} ".colorize(piece.color).colorize(:background => BACKGROUND_COLOR[(x + y) % 2])
+      print " #{UNICODE_PIECES[piece.class]} ".colorize(piece.color).colorize(
+        :background => BACKGROUND_COLOR[(x + y) % 2])
     else
       print "   ".colorize(:background => BACKGROUND_COLOR[(x + y) % 2])
     end
