@@ -18,5 +18,5 @@ CLI chess game built using Ruby. Currently a work in progress, with most of game
 * Follow in-game instructions to play chess (press 'q' to quit)
 
 ###Features to be added
-* En passant
+* [En passant](https://en.wikipedia.org/wiki/En_passant)
 * Initial two-square advance for pawn
